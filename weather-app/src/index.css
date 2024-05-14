@@ -1,13 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: yusei-magic, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+   background-image: url('../assets/background.jpg'); /* Update this path */
+    background-size: cover;
+    background-position: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+h2 {
+  font-size: 1.2rem;
+
 }
+
+h1 {
+  font-size: 4rem;
+}
+
+.app search {
+  text-align: center;
+  padding: 1rem;
+}
+
+.app input {
+  padding: .7rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  border: 1px solid rgb(255, 255, 255, 0.5);
+}
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+/* Add transitions to the forecast container */
+/* Ensure the header is always visible, even when the content is collapsed */
+.forecast-container {
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, padding 0.3s ease-out;
+  max-height: 1000px; /* Temporarily set a high max-height to test visibility */
+  /* padding: 0 16px; Horizontal padding */
+}
+
+.forecast-shown {
+  max-height: 1000px; /* Sufficiently large to show the content */
+  padding: 16px; /* Standard padding */
+}
+
+.forecast-day {
+  display: flex;
+  justify-content: space-between; /* Distribute space between items */
+  align-items: center; /* Align items vertically */
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Style for individual elements inside each forecast day for better control */
+.forecast-day p, .forecast-day img {
+  margin: 0 5px; /* Margin for spacing */
+  white-space: nowrap; /* Prevent wrapping of text */
+}
+
+.forecast-day img {
+  flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.forecast-header {
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px; /* Adjusted for better visibility */
+  font-weight: bold;
+  background-color: #f8f9fa; /* Light grey, ensure this is visible on your background */
+  color: #333; /* Adding color for visibility */
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  border: 1px solid #ccc; /* Add border for better visibility */
+
+  &:hover {
+    background-color: #e2e6ea; /* Slightly darker grey */
+  }
+}
+
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+
+.info-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 500px; /* Adjust based on your design */
+}
+
+.views {
+  display: flex;
+  width: 200%; /* Enough width to hold both views side by side */
+  transition: transform 0.5s ease; /* Smooth transition for sliding */
+}
+
+.view {
+  width: 50%; /* Each view takes up half of the .views width */
+  flex-shrink: 0; /* Prevents the view from shrinking */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+}
+
+/* Ensure the image does not distort the layout */
+img {
+  width: 100px; /* Fixed width */
+  height: 100px; /* Fixed height */
+  object-fit: contain; /* Maintain aspect ratio without cropping */
+}
+
+.toggle-button {
+  position: absolute;
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Ensure it's perfectly centered */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.arrow-icon {
+  width: 20px; /* Smaller width for the icon */
+  height: 20px; /* Smaller height for the icon */
+}
+
+
+
