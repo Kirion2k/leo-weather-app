@@ -95,9 +95,6 @@ h1 {
   transition: background-color 0.3s ease;
   border: 1px solid #ccc; /* Add border for better visibility */
 
-  &:hover {
-    background-color: #e2e6ea; /* Slightly darker grey */
-  }
 }
 
 

@@ -73,7 +73,7 @@ function App() {
       case 'haze':
               return '/weather_icon/haze.png';
       default:
-        return 'url_to_default_weather_icon.png'; // A default icon if no match is found
+        return 'url_to_default_weather_icon.png'; 
     }
   }
 
@@ -103,7 +103,7 @@ function App() {
           </div>
           {data && (
             <div className="info-container bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 transform transition-all duration-500 ease-in-out">
-              <div className="views" style={{ transform: `translateX(${view === 'current' ? '0%' : '-56%'})` }}>
+              <div className="views" style={{ transform: `translateX(${view === 'current' ? '0%' : '-53%'})` }}>
                 <div className="view current-view pb-6">
                   <div className="text-center flex items-center flex-col">
                     <p className="text-9xl">{Math.round(data.main.temp)}°C</p>
@@ -114,15 +114,16 @@ function App() {
                 </div>
                 <div className="view forecast-view">
                   {/* Forecast Data */}
-                  <h2 className="forecast-title text-2xl font-bold mb-4 ml-14 pl-5 text-center">5-Day Forecast</h2>
+                  <h2 className="forecast-title text-5xl font-bold mb-4 pl-12 pb-5 text-center">5-Day Forecast</h2>
                   {forecast.map((day, index) => (
-                    <div key={index} className="forecast-day ml-20 mb-2 flex justify-between items-center">
-                      <p>{day.day}</p>
-                      <img src={day.icon} alt="Weather Icon" style={{ width: "50px", height: "50px" }} />
-                      <p>High: {Math.round(day.highTemp)}°C</p>
-                      <p>Low: {Math.round(day.lowTemp)}°C</p>
-                      <p>{day.condition}</p>
-                    </div>
+                    <React.Fragment key={index}>
+                      <div className="border-b-teel grid grid-cols-4 gap-4 items-center justify-items-between mb-2 ml-14">
+                        <div className="text-center font-bold">{day.day}</div>
+                        <img src={day.icon} alt="Weather Icon" className="w-12 h-12 mx-auto" />
+                        <p className="text-center">High: {Math.round(day.highTemp)}°C</p>
+                        <p className="text-center">Low: {Math.round(day.lowTemp)}°C</p>
+                      </div>
+                    </React.Fragment>
                   ))}
                 </div>
               </div>
